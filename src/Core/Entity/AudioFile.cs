@@ -3,11 +3,20 @@ using Core.Interfaces;
 
 class AudioFile : MediaFile, IAudio
 {
+    private string _format = String.Empty;
+
     public AudioFile(string name, string format = "mp3") : base(name)
     {
         FileName = name;
-        FileFormat = format;
+        _format = format;
     }
 
-    public string FileFormat { get; }
+    public override string FileFormat 
+    {
+        get { return _format; }
+    }
+    public override string ToString()
+    {
+        return this.FileName + _format;
+    }
 }

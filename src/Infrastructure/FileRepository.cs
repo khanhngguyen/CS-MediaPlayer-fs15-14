@@ -2,14 +2,20 @@ using Core.Entity;
 using Core.Interfaces;
 namespace Infrastructure;
 
-public class FileRepository : IMediaFileRepository
+public sealed class FileRepository : IMediaFileRepository
 {
     private List<MediaFile> _fileList = new List<MediaFile>();
     private List<Playlist> _playlistList = new List<Playlist>();
+    private static readonly Lazy<FileRepository> _lazy = new Lazy<FileRepository>(() => new FileRepository());
 
     public FileRepository()
     {
         
+    }
+
+    public static FileRepository Instance 
+    {
+        get { return _lazy.Value; }
     }
 
     public bool AddFile(MediaFile file)

@@ -17,6 +17,6 @@ class AudioFile : MediaFile, IAudio
     }
     public override string ToString()
     {
-        return this.FileName + _format;
+        return this.FileName + "." + _format;
     }
 }

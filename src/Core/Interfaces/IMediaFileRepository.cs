@@ -11,5 +11,4 @@ public interface IMediaFileRepository
     public bool DeletePlaylist(string name);
     public string GetAllPlaylist();
     public Playlist? SearchPlaylist(string name);
-    
 }

@@ -17,6 +17,6 @@ class VideoFile : MediaFile, IVideo
     }
     public override string ToString()
     {
-        return this.FileName + _format;
+        return this.FileName + "." + _format;
     }
 }

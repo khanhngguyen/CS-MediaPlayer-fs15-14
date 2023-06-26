@@ -46,7 +46,7 @@ public class Playlist
         if (_fileList.Count() == 0) return "There is no file in this Playlist";
         else
         {
-            string text = "All media files: ";
+            string text = $"All media files in Playlist {_name}: ";
             foreach (MediaFile item in _fileList)
             {
                 text = text + $"\n{item.FileName}.{item.FileFormat}";
@@ -57,7 +57,11 @@ public class Playlist
     public MediaFile? SearchFileInPlaylist(string name)
     {
         var existed = _fileList.Find(file => file.FileName.ToLower() == name.ToLower());
-        if (existed != null) return existed;
+        if (existed != null)
+        {
+            Console.WriteLine($"Found {name} in Playlist {_name}");
+            return existed;
+        }
         else
         {
             Console.WriteLine($"No such file with name {name} in this Playlist");

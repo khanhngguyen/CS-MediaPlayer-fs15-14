@@ -1,3 +1,4 @@
+using Core.ErrorHandler;
 namespace Core.Entity;
 
 public abstract class MediaFile 
@@ -10,7 +11,7 @@ public abstract class MediaFile
         get { return _fileName; }
         set
         {
-            if (String.IsNullOrEmpty(value)) throw new ArgumentException("File name can not be empty");
+            if (String.IsNullOrEmpty(value)) throw ExceptionHandler.FileNameException();
             else _fileName = value;
         }
     }

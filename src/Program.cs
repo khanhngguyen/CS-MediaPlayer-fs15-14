@@ -45,5 +45,24 @@ internal class Program
         // playlistController.DeletePlaylist("Favorites");
         // playlistController.DeletePlaylist("Pop songs");
         // Console.WriteLine(playlistController.GetAllPlaylist());
+        bool isPlaying = true;
+        while (isPlaying)
+        {
+            Console.WriteLine("input command: ");
+            var command = Console.ReadLine();
+            switch (command)
+            {
+                case "play":
+                playlistController.Play(playlist);
+                break;
+                case "stop":
+                Console.WriteLine("stop playing");
+                isPlaying = false;
+                break;
+                default:
+                Console.WriteLine("Invalid input, retry: ");
+                break;
+            }
+        }
     }
 }

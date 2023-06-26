@@ -1,3 +1,4 @@
+using Core.ErrorHandler;
 namespace Core.Entity;
 
 public class Playlist
@@ -10,7 +11,7 @@ public class Playlist
         get { return _name; }
         set 
         {
-            if (String.IsNullOrEmpty(value)) throw new ArgumentException("Playlist name can not be empty");
+            if (String.IsNullOrEmpty(value)) throw ExceptionHandler.PlaylistNameException();
             else _name = value;
         }
     }

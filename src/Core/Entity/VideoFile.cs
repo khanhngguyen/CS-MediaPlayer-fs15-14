@@ -23,4 +23,9 @@ class VideoFile : MediaFile, IVideo
     {
         return this.FileName + "." + _format;
     }
+
+    ~VideoFile()
+    {
+        Console.WriteLine($"Video file {FileName} is disposed");
+    }
 }

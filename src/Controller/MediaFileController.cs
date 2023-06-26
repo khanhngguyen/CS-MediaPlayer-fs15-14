@@ -38,4 +38,9 @@ class MediaFileController
     {
         return _mediaFileService.SearchFile(name);
     }
+
+    ~MediaFileController()
+    {
+        Console.WriteLine("MediaController is disposed");
+    }
 }

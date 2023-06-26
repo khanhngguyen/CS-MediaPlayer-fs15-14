@@ -32,4 +32,11 @@ class PlaylistService : IPlaylistService
     {
         return _fileRepository.SearchPlaylist(name);
     }
+
+    ~PlaylistService()
+    {
+        {
+        Console.WriteLine("PlaylistService is disposed");
+    }
+    }
 }

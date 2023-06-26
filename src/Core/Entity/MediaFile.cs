@@ -30,4 +30,9 @@ public abstract class MediaFile
     {
         FileName = name;
     }
+
+    ~MediaFile()
+    {
+        Console.WriteLine($"Media file {_fileName} is disposed");
+    }
 }

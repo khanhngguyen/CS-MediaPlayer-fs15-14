@@ -39,4 +39,9 @@ class MediaFileService : IMediaFileService
     {
         return _fileRepository.SearchFile(name);
     }
+
+    ~MediaFileService()
+    {
+        Console.WriteLine("MediaService is disposed");
+    }
 }

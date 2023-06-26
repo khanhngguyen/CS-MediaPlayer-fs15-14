@@ -78,4 +78,9 @@ public class Playlist
     {
         Name = name;
     }
+
+    ~Playlist()
+    {
+        Console.WriteLine($"Playlist {_name} is disposed");
+    }
 }

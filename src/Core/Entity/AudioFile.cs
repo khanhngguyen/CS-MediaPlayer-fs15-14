@@ -23,4 +23,9 @@ class AudioFile : MediaFile, IAudio
     {
         return this.FileName + "." + _format;
     }
+
+    ~AudioFile()
+    {
+        Console.WriteLine($"Audio file {FileName} is disposed");
+    }
 }

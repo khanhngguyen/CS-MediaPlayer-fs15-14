@@ -31,4 +31,9 @@ class PlaylistController
     {
         return _playlistService.SearchPlaylist(name);
     }
+
+    ~PlaylistController()
+    {
+        Console.WriteLine("PlaylistController is disposed");
+    }
 }

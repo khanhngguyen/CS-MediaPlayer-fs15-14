@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Core.Entity;
+using Core.Factory;
 using Infrastructure;
 using Service.Files;
 using Service.Playlists;
@@ -8,9 +9,14 @@ internal class Program
 {
     private static void Main()
     {
-        AudioFile audio1 = new AudioFile("Song 1");
-        AudioFile audio2 = new AudioFile("Song 2");
-        VideoFile video1 = new VideoFile("Video 1");
+        // AudioFile audio1 = new AudioFile("Song 1");
+        // AudioFile audio2 = new AudioFile("Song 2");
+        // VideoFile video1 = new VideoFile("Video 1");
+        MediaFile audio1 = new AudioFileFactory().CreateFile("Song 1");
+        MediaFile audio2 = new AudioFileFactory().CreateFile("Song 2");
+        MediaFile video1 = new VideoFileFactory().CreateFile("Video 1");
+        // Console.WriteLine(audio1.GetType().ToString());
+        // Console.WriteLine(video1.GetType().ToString());
         // Console.WriteLine(audio1.FileFormat);
         // Console.WriteLine(video.FileFormat);
         // Playlist playlist = new Playlist("Playlist 1");
@@ -45,7 +51,7 @@ internal class Program
         // playlistController.DeletePlaylist("Favorites");
         // playlistController.DeletePlaylist("Pop songs");
         // Console.WriteLine(playlistController.GetAllPlaylist());
-        bool isPlaying = true;
+        /* bool isPlaying = true;
         while (isPlaying)
         {
             Console.WriteLine("input command: ");
@@ -63,6 +69,6 @@ internal class Program
                 Console.WriteLine("Invalid input, retry: ");
                 break;
             }
-        }
+        } */
     }
 }

@@ -15,6 +15,8 @@ public abstract class MediaFile
             else _fileName = value;
         }
     }
+    
+    public abstract string GetFileType();
     public virtual string FileFormat
     {
         get { return _format; }

@@ -11,6 +11,10 @@ class VideoFile : MediaFile, IVideo
         _format = format;
     }
 
+    public override string GetFileType()
+    {
+        return $"file type: video, format: {_format}";
+    }
     public override string FileFormat
     {
         get { return _format; }

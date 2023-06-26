@@ -11,6 +11,10 @@ class AudioFile : MediaFile, IAudio
         _format = format;
     }
 
+    public override string GetFileType()
+    {
+        return $"file type: audio, format: {_format}";
+    }
     public override string FileFormat 
     {
         get { return _format; }

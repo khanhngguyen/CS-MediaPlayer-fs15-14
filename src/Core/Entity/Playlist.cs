@@ -1,10 +1,14 @@
 using Core.ErrorHandler;
+using Core.Observer;
+
 namespace Core.Entity;
 
 public class Playlist
 {
     private string _name = String.Empty;
     private List<MediaFile> _fileList = new List<MediaFile>();
+    public event EventHandler<PlaylistObserverArgs>? AddFileToListEvent = null;
+    public event EventHandler<PlaylistObserverArgs>? DeleteFileFromListEvent = null;
 
     public string Name 
     {
@@ -26,6 +30,7 @@ public class Playlist
         else 
         {
             _fileList.Add(file);
+            this.NotifyAddFileToList(this);
             return true;
         }
     }
@@ -34,6 +39,7 @@ public class Playlist
         if (_fileList.Contains(file))
         {
             _fileList.Remove(file);
+            this.NotifyDeleteFileFromList(this);
             return true;
         }
         else 
@@ -69,6 +75,10 @@ public class Playlist
             return null;
         }
     }
+    public int CountFilesInPlaylist()
+    {
+        return _fileList.Count();
+    }
     public override string ToString()
     {
         return "Playlist: " + _name;
@@ -77,6 +87,16 @@ public class Playlist
     public Playlist(string name)
     {
         Name = name;
+    }
+    public void NotifyAddFileToList(Playlist playlist)
+    {
+        var args = new PlaylistObserverArgs(playlist);
+        if (AddFileToListEvent != null) AddFileToListEvent.Invoke(this, args);
+    }
+    public void NotifyDeleteFileFromList(Playlist playlist)
+    {
+        var args = new PlaylistObserverArgs(playlist);
+        if (DeleteFileFromListEvent != null) DeleteFileFromListEvent.Invoke(this, args);
     }
 
     ~Playlist()

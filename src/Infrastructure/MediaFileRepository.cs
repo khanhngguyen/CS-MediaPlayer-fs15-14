@@ -1,19 +1,17 @@
 using Core.Entity;
 using Core.Interfaces;
+
 namespace Infrastructure;
 
-public sealed class FileRepository : IMediaFileRepository
+public sealed class MediaFileRepository : IMediaFileRepository
 {
     private List<MediaFile> _fileList = new List<MediaFile>();
     private List<Playlist> _playlistList = new List<Playlist>();
-    private static readonly Lazy<FileRepository> _lazy = new Lazy<FileRepository>(() => new FileRepository());
+    private static readonly Lazy<MediaFileRepository> _lazy = new Lazy<MediaFileRepository>(() => new MediaFileRepository());
 
-    public FileRepository()
-    {
-        
-    }
+    public MediaFileRepository() { }
 
-    public static FileRepository Instance 
+    public static MediaFileRepository Instance 
     {
         get { return _lazy.Value; }
     }

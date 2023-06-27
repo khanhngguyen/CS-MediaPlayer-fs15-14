@@ -1,10 +1,14 @@
 using Core.Entity;
 using Core.Interfaces;
+using Core.Observer;
+
 namespace Service.Files;
 
 class MediaFileService : IMediaFileService
 {
     private IMediaFileRepository _fileRepository;
+    public event EventHandler<FileObserverArgs>? AddFileEvent = null;
+    public event EventHandler<FileObserverArgs>? DeleteFileEvent = null;
 
     public MediaFileService(IMediaFileRepository repository)
     {
@@ -25,10 +29,12 @@ class MediaFileService : IMediaFileService
     }
     public bool AddFile(MediaFile file)
     {
+        this.NotifyAddFile(file);
         return _fileRepository.AddFile(file);
     }
     public bool DeleteFile(MediaFile file)
     {
+        this.NotifyDeleteFile(file);
         return _fileRepository.DeleteFile(file);
     }
     public string GetAllFiles()
@@ -38,6 +44,16 @@ class MediaFileService : IMediaFileService
     public MediaFile? SearchFile(string name)
     {
         return _fileRepository.SearchFile(name);
+    }
+    public void NotifyAddFile(MediaFile file)
+    {
+        var args = new FileObserverArgs(file);
+        if (AddFileEvent != null) AddFileEvent.Invoke(this, args);
+    }
+    public void NotifyDeleteFile(MediaFile file)
+    {
+        var args = new FileObserverArgs(file);
+        if (DeleteFileEvent != null) DeleteFileEvent.Invoke(this, args);
     }
 
     ~MediaFileService()

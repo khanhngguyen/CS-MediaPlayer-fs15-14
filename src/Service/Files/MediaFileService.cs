@@ -17,7 +17,9 @@ class MediaFileService : IMediaFileService
 
     public void Play(MediaFile file)
     {
-        Console.WriteLine($"Playing {file.FileName}");
+        var existed = _fileRepository.SearchFile(file.FileName);
+        if (existed != null) Console.WriteLine($"Playing {file.FileName}");
+        else Console.WriteLine($"Can not play, file {file.ToString()} does not exist");
     }
     public void Pause(MediaFile file)
     {

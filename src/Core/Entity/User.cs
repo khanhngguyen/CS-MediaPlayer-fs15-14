@@ -31,11 +31,11 @@ public sealed class User
     public void HandleAddFileToListEvent(object? sender, PlaylistObserverArgs e)
     {
         Console.WriteLine($"--A new file is added to {e.Playlist}--");
-        Console.WriteLine($"--Number of files in {e.Playlist}: {e.Playlist.CountFilesInPlaylist()}--");
+        Console.WriteLine($"  Number of files in {e.Playlist}: {e.Playlist.CountFilesInPlaylist()}  ");
     }
     public void HandleDeleteFileFromListEvent(object? sender, PlaylistObserverArgs e)
     {
         Console.WriteLine($"--A file has been deleted from {e.Playlist}--");
-        Console.WriteLine($"--Number of files in {e.Playlist}: {e.Playlist.CountFilesInPlaylist()}--");
+        Console.WriteLine($"  Number of files in {e.Playlist}: {e.Playlist.CountFilesInPlaylist()}  ");
     }
 }

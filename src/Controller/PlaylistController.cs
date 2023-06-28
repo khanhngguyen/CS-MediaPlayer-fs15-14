@@ -15,6 +15,10 @@ class PlaylistController
     {
         _playlistService.Play(playlist);
     }
+    public void Stop(Playlist playlist)
+    {
+        _playlistService.Stop(playlist);
+    }
     public Playlist CreatePlaylist(string name)
     {
         return _playlistService.CreatePlaylist(name);
@@ -30,6 +34,10 @@ class PlaylistController
     public Playlist? SearchPlaylist(string name)
     {
         return _playlistService.SearchPlaylist(name);
+    }
+    public string GetAllFilesInPlaylist(Playlist playlist)
+    {
+        return _playlistService.GetAllFilesInPlaylist(playlist);
     }
 
     ~PlaylistController()

@@ -19,6 +19,12 @@ public class Playlist
             else _name = value;
         }
     }
+    public bool IsPlaying { get; set; }
+
+    public Playlist(string name)
+    {
+        Name = name;
+    }
 
     public bool AddFileToList(MediaFile file)
     {
@@ -50,7 +56,7 @@ public class Playlist
     }
     public string GetAllFilesInPlaylist()
     {
-        if (_fileList.Count() == 0) return "There is no file in this Playlist";
+        if (_fileList.Count() == 0) return $"There is no file in Playlist {this._name}";
         else
         {
             string text = $"All media files in Playlist {_name}: ";
@@ -82,11 +88,6 @@ public class Playlist
     public override string ToString()
     {
         return "Playlist: " + _name;
-    }
-
-    public Playlist(string name)
-    {
-        Name = name;
     }
     public void NotifyAddFileToList(Playlist playlist)
     {

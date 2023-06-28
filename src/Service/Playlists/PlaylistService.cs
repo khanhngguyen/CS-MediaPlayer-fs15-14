@@ -17,8 +17,14 @@ class PlaylistService : IPlaylistService
 
     public void Play(Playlist playlist)
     {
-        Console.WriteLine($"Play all media files in Playlist: {playlist.Name}");
-        Console.WriteLine(playlist.GetAllFilesInPlaylist());
+        Console.WriteLine($"Playing all media files in Playlist: {playlist.Name}");
+        playlist.IsPlaying = true;
+        // Console.WriteLine(playlist.GetAllFilesInPlaylist());
+    }
+    public void Stop(Playlist playlist)
+    {
+        Console.WriteLine($"Stop playing Playlist: {playlist.Name}");
+        playlist.IsPlaying = false;
     }
     public Playlist CreatePlaylist(string name)
     {
@@ -43,6 +49,10 @@ class PlaylistService : IPlaylistService
     public Playlist? SearchPlaylist(string name)
     {
         return _fileRepository.SearchPlaylist(name);
+    }
+    public string GetAllFilesInPlaylist(Playlist playlist)
+    {
+        return playlist.GetAllFilesInPlaylist();
     }
     public void NotifyCreatePlaylist(Playlist playlist)
     {

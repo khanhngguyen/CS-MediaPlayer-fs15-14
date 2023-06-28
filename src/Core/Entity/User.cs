@@ -1,4 +1,3 @@
-using Core.ErrorHandler;
 using Core.Observer;
 namespace Core.Entity;
 
@@ -6,7 +5,7 @@ public sealed class User
 {
     private static readonly Lazy<User> _lazy = new Lazy<User>(() => new User());
 
-    public User() { }
+    private User() { }
 
     public static User Instance
     {
